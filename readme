@@ -1,20 +1,56 @@
-Hello!
+# Abstract
+I and my teammates at Kaist university implemented this project as a final project for the course COE202 of our university. 
+This project aims to train 2 teams to play against each other by applying reinforcement learning network. 
+![](assets/version_1_epoch_99.0.png)
 
-In order to run the game just run "python test.py"
+# About the problem
+Our game is a football game in Unity environment, which has 2 team (blue and purple) to play against each other. 
+During the match, each agent is equipped with a total of 14 sensors, 11 in front and 3 in the rear. 
+![](assets/version_1_epoch_99.0.png)
 
-Your torch version must be 1.6 or higher, lower versions will not be able to load the model
-The places in code that you are likely would like to change are indicated with comments like this one:
+In this project, agents must strategically take different actions depending on the type of object detected by the sensor.
 
-#############################Load example model here############################ 
+And each sensor data includes 8 values 
+![](assets/version_1_epoch_99.0.png)
 
-We used seperate model for each player, so please remove only players from pink team. Their names are agent_p1 and agent_p2. And leave agent_b1, and agent_b2.
-For model loading we use those functions: agent_b1.load_model(......), etc
+This data is composed of two types of data, the first (index 0~6) contains information about
+detectable objects which the sensor caught, and the second (index 7) represents how far the
+detected object is from. 
+For example, if 8th sensor catch a ball then it sends [1,0,0,0,0,0,0, distance] as data.
+For more detail about problem statement, please download file from this link: 
 
-The firs player is able to commit 6 action (4 linear + 2 rotation)
-The second player - 4 actions (4 linear)
+# Installation
+Please notice that this project only run on windows environment
+- torch==1.6.0
+- torchvision==0.7.0
+To install Unity environment, please step-by-step run these commands on the terminal:
+1. git clone --branch latest_release https://github.com/Unity-Technologies/ml-agents.git
+2. pip install -e ./ml-agents/ml-agents-envs/
+3. pip install -e ./ml-agents/ml-agents/
+4. pip install -e ./ml-agents/gym-unity/
 
-We devided training into 2 stages. Firstly the team was training against a team of random moving bots(for this we have train.py). Later we use the resulting model for training team by team. 
+# Train 
+We have two plans for training: 
 
-If you have any questions regarding code contact me any time.
-o.nasypanyi@kaist.ac.kr
-010-4885-9111
+a) Training only 2 agents from one team, and let 2 agents from the remaining team play randomly
+
+b) Training 4 agents from two teams. 
+
+For plan a), please run file train.py , and for plan b) please run file train_two.py 
+
+During training process, after a certain number of episodes, weights for each agent would be saved. 
+
+# Test
+For demo, we have uploaded weights for each agents inside the folder "res" of this project. To see performance of the trained model,
+please run file test.py 
+
+# Ideas and tricks used in this project
+To improve the performance of our reinforcement learning model, we have implement a lot of tricks, and these tricks
+are explained in detail by our team's final presentation that you can find from this link: 
+https://www.youtube.com/watch?v=pozj9_ppXP0&t=46s&ab_channel=TienDatNguyen
+
+# Reference
+During implementing this project, we apply a lot of tricks that mentioned in the paper http://cs230.stanford.edu/projects_winter_2019/reports/15811878.pdf
+
+
+
