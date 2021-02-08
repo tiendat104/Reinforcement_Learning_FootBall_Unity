@@ -1,0 +1,20 @@
+Hello!
+
+In order to run the game just run "python test.py"
+
+Your torch version must be 1.6 or higher, lower versions will not be able to load the model
+The places in code that you are likely would like to change are indicated with comments like this one:
+
+#############################Load example model here############################ 
+
+We used seperate model for each player, so please remove only players from pink team. Their names are agent_p1 and agent_p2. And leave agent_b1, and agent_b2.
+For model loading we use those functions: agent_b1.load_model(......), etc
+
+The firs player is able to commit 6 action (4 linear + 2 rotation)
+The second player - 4 actions (4 linear)
+
+We devided training into 2 stages. Firstly the team was training against a team of random moving bots(for this we have train.py). Later we use the resulting model for training team by team. 
+
+If you have any questions regarding code contact me any time.
+o.nasypanyi@kaist.ac.kr
+010-4885-9111
