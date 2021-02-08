@@ -1,17 +1,19 @@
 # Abstract
 I and my teammates at Kaist university implemented this project as a final project for the course COE202 of our university. 
 This project aims to train 2 teams to play against each other by applying reinforcement learning network. 
-![](assets/version_1_epoch_99.0.png)
+![](assets/game_screen.png)
 
 # About the problem
 Our game is a football game in Unity environment, which has 2 team (blue and purple) to play against each other. 
 During the match, each agent is equipped with a total of 14 sensors, 11 in front and 3 in the rear. 
-![](assets/version_1_epoch_99.0.png)
+
+![](assets/sensor.png)
 
 In this project, agents must strategically take different actions depending on the type of object detected by the sensor.
 
 And each sensor data includes 8 values 
-![](assets/version_1_epoch_99.0.png)
+
+![](assets/sensor_array.png)
 
 This data is composed of two types of data, the first (index 0~6) contains information about
 detectable objects which the sensor caught, and the second (index 7) represents how far the
